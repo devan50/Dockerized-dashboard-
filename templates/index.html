@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Status Dashboard</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101827;
+            color: #f1f5f9;
+        }
+
+        header {
+            padding: 28px 8%;
+            border-bottom: 1px solid #293449;
+        }
+
+        header h1 { margin: 0; color: #38bdf8; }
+        header p { color: #94a3b8; }
+
+        main {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            padding: 25px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 14px;
+        }
+
+        .card h2 { font-size: 16px; color: #94a3b8; }
+        .value { font-size: 28px; font-weight: bold; color: #38bdf8; }
+        .description { color: #cbd5e1; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DevOps Dashboard</h1>
+        <p>Application monitoring and service status</p>
+    </header>
+
+    <main>
+        <h2>System Overview</h2>
+
+        <div class="grid">
+            <section class="card">
+                <h2>Web Application</h2>
+                <div class="value">ONLINE</div>
+                <p class="description">Flask application is responding.</p>
+            </section>
+
+            <section class="card">
+                <h2>Redis Service</h2>
+                <div class="value">{{ redis_status }}</div>
+                <p class="description">Connection to the counter database.</p>
+            </section>
+
+            <section class="card">
+                <h2>Page Visits</h2>
+                <div class="value">{{ visits }}</div>
+                <p class="description">Total visits recorded by Redis.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>Built with Flask, Redis, Docker and Docker Compose</footer>
+</body>
+</html>
+
